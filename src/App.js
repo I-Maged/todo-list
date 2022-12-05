@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           to a series of rabies cases springing up around the country.
         </p>
       </article>
+      <Footer />
     </div>
   );
 }
