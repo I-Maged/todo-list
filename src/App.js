@@ -1,8 +1,9 @@
-import './App.css';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className='flex flex-col justify-between items-center h-screen font-mono'>
+      <Header />
       <h1 className='text-4xl'>
         Garlic bread with cheese: What the science tells us
       </h1>
