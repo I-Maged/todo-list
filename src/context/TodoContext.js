@@ -10,6 +10,10 @@ export const TodoProvider = ({ children }) => {
       { id: 2, title: 'wash dishes!', completed: false },
       { id: 3, title: 'code!', completed: false },
     ],
+    todoToEdit: {
+      todo: {},
+      edit: false,
+    },
   };
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
@@ -34,12 +38,31 @@ export const TodoProvider = ({ children }) => {
     });
   };
 
+  const editTodo = (todo) => {
+    dispatch({
+      type: 'EDIT_TODO',
+      payload: todo,
+    });
+  };
+  const updateTodo = (id, text) => {
+    dispatch({
+      type: 'UPDATE_TODO',
+      payload: {
+        id,
+        text,
+      },
+    });
+  };
+
   return (
     <TodoContext.Provider
       value={{
         todos: state.todos,
+        todoToEdit: state.todoToEdit,
         addTodo,
         deleteTodo,
+        editTodo,
+        updateTodo,
       }}
     >
       {children}

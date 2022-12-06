@@ -1,19 +1,28 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import TodoContext from '../context/TodoContext';
 
 function Form() {
-  const { addTodo } = useContext(TodoContext);
+  const { addTodo, todoToEdit, updateTodo } = useContext(TodoContext);
   const [text, setText] = useState('');
+
+  useEffect(() => {
+    if (todoToEdit.edit === true) {
+      setText(todoToEdit.todo.title);
+    }
+  }, [todoToEdit]);
 
   const handleTextChange = (e) => {
     setText(e.target.value);
-    // console.log(text);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (todoToEdit.edit === true) {
+      updateTodo(todoToEdit.todo.id, text);
+    } else {
+      addTodo(text);
+    }
 
-    addTodo(text);
     setText('');
   };
 

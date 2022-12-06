@@ -6,7 +6,7 @@ function TodoList() {
   const { todos } = useContext(TodoContext);
 
   return (
-    <div className='mx-auto px-2'>
+    <div>
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
