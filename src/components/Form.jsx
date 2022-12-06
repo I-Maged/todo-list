@@ -1,6 +1,6 @@
 function Form() {
   return (
-    <form className='flex justify-center my-12'>
+    <form className='flex justify-center my-10'>
       <input
         type='text'
         placeholder='Add Todo'
