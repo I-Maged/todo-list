@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { createContext, useReducer } from 'react';
 import todoReducer from './TodoReducer';
 
@@ -7,8 +8,8 @@ export const TodoProvider = ({ children }) => {
   const initialState = {
     todos: [
       { id: 1, title: 'Eat Breakfast!', completed: false },
-      { id: 2, title: 'wash dishes!', completed: false },
-      { id: 3, title: 'code!', completed: false },
+      { id: 11, title: 'wash dishes!', completed: true },
+      { id: 12, title: 'code!', completed: false },
     ],
     todoToEdit: {
       todo: {},
@@ -20,7 +21,7 @@ export const TodoProvider = ({ children }) => {
 
   const addTodo = (text) => {
     const newTodo = {
-      id: 5,
+      id: uuidv4(),
       title: text,
       completed: false,
     };
@@ -54,6 +55,13 @@ export const TodoProvider = ({ children }) => {
     });
   };
 
+  const completeTodo = (id) => {
+    dispatch({
+      type: 'COMPLETED_STATUS',
+      payload: id,
+    });
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -63,6 +71,7 @@ export const TodoProvider = ({ children }) => {
         deleteTodo,
         editTodo,
         updateTodo,
+        completeTodo,
       }}
     >
       {children}

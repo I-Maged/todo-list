@@ -30,6 +30,17 @@ const todoReducer = (state, action) => {
           edit: false,
         },
       };
+    case 'COMPLETED_STATUS':
+      return {
+        ...state,
+        todoCompleted: {
+          todos: state.todos.forEach((todo) => {
+            if (todo.id === action.payload) {
+              todo.completed = true;
+            }
+          }),
+        },
+      };
     default:
       return state;
   }
