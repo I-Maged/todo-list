@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import TodoContext from '../context/TodoContext';
 
 function Form() {
+  const { addTodo } = useContext(TodoContext);
   const [text, setText] = useState('');
 
   const handleTextChange = (e) => {
     setText(e.target.value);
-    console.log(text);
+    // console.log(text);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(text);
+    addTodo(text);
     setText('');
   };
 
@@ -20,8 +22,9 @@ function Form() {
       <input
         type='text'
         placeholder='Add Todo'
+        value={text}
         onChange={handleTextChange}
-        className='min-w-[50%]	input input-bordered input-primary mr-3'
+        className='w-[100%]	input input-bordered input-primary mr-3'
       />
       <button type='submit' className='btn btn-primary'>
         Submit

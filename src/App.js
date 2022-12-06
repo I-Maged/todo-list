@@ -9,7 +9,7 @@ function App() {
     <TodoProvider>
       <div className='flex flex-col justify-between items-center h-screen font-mono'>
         <Header />
-        <main className='container flex-col h-screen'>
+        <main className='container flex-col h-screen px-2 md:max-w-xl'>
           <Form />
           <TodoList />
         </main>
