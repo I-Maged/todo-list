@@ -20,7 +20,7 @@ function TodoItem({ todo }) {
       </h2>
       <div className='flex'>
         <button
-          onClick={() => completeTodo(todo.id)}
+          onClick={() => completeTodo(todo.id, todo.completed)}
           className='btn btn-primary btn-sm mr-2'
         >
           {<FaCheck />}

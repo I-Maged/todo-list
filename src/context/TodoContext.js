@@ -7,9 +7,9 @@ const TodoContext = createContext();
 export const TodoProvider = ({ children }) => {
   const initialState = {
     todos: [
-      { id: 1, title: 'Eat Breakfast!', completed: false },
-      { id: 11, title: 'wash dishes!', completed: true },
-      { id: 12, title: 'code!', completed: false },
+      { id: uuidv4(), title: 'Eat Breakfast!', completed: false },
+      { id: uuidv4(), title: 'wash dishes!', completed: true },
+      { id: uuidv4(), title: 'code!', completed: false },
     ],
     todoToEdit: {
       todo: {},
@@ -55,10 +55,12 @@ export const TodoProvider = ({ children }) => {
     });
   };
 
-  const completeTodo = (id) => {
+  const completeTodo = (id, completed) => {
+    const status = !completed;
+
     dispatch({
       type: 'COMPLETED_STATUS',
-      payload: id,
+      payload: { id, status },
     });
   };
 

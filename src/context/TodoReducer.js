@@ -33,10 +33,10 @@ const todoReducer = (state, action) => {
     case 'COMPLETED_STATUS':
       return {
         ...state,
-        todoCompleted: {
+        todoStatus: {
           todos: state.todos.forEach((todo) => {
-            if (todo.id === action.payload) {
-              todo.completed = true;
+            if (todo.id === action.payload.id) {
+              todo.completed = action.payload.status;
             }
           }),
         },
