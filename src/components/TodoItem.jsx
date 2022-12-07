@@ -12,7 +12,6 @@ function TodoItem({ todo }) {
           todo.completed ? 'line-through' : 'no-underline'
         }`}
       >
-        {/* <h2> */}
         {todo.title}
         {!todo.completed && (
           <div className='badge badge-secondary ml-1 align-middle'>NEW</div>

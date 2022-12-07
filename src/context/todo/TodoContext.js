@@ -6,11 +6,7 @@ const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
   const initialState = {
-    todos: [
-      { id: uuidv4(), title: 'Eat Breakfast!', completed: false },
-      { id: uuidv4(), title: 'wash dishes!', completed: true },
-      { id: uuidv4(), title: 'code!', completed: false },
-    ],
+    todos: [],
     todoToEdit: {
       todo: {},
       edit: false,
