@@ -1,19 +1,25 @@
 import { useState, useContext, useEffect } from 'react';
-import TodoContext from '../context/TodoContext';
+import TodoContext from '../context/todo/TodoContext';
+import AlertContext from '../context/alert/AlertContext';
 
 function Form() {
   const { addTodo, todoToEdit, updateTodo } = useContext(TodoContext);
+  const { setAlert } = useContext(AlertContext);
+
   const [text, setText] = useState('');
 
   useEffect(() => {
-    if (todoToEdit.edit === true) {
+    if (todoToEdit.edit) {
       setText(todoToEdit.todo.title);
     }
   }, [todoToEdit]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (todoToEdit.edit === true) {
+
+    if (text.trim() === '') {
+      setAlert('Todo cannot be empty');
+    } else if (todoToEdit.edit) {
       updateTodo(todoToEdit.todo.id, text);
     } else {
       addTodo(text);
@@ -23,7 +29,7 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='flex justify-center my-10'>
+    <form onSubmit={handleSubmit} className='flex justify-center mt-8 mb-3'>
       <input
         type='text'
         placeholder='Add Todo'
