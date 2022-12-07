@@ -22,10 +22,11 @@ const todoReducer = (state, action) => {
       return {
         ...state,
         todoToEdit: {
-          todos: state.todos.forEach((todo) => {
+          todos: state.todos.map((todo) => {
             if (todo.id === action.payload.id) {
               todo.title = action.payload.text;
             }
+            return todo;
           }),
           edit: false,
         },
@@ -34,10 +35,11 @@ const todoReducer = (state, action) => {
       return {
         ...state,
         todoStatus: {
-          todos: state.todos.forEach((todo) => {
+          todos: state.todos.map((todo) => {
             if (todo.id === action.payload.id) {
               todo.completed = action.payload.status;
             }
+            return todo;
           }),
         },
       };

@@ -11,10 +11,6 @@ function Form() {
     }
   }, [todoToEdit]);
 
-  const handleTextChange = (e) => {
-    setText(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (todoToEdit.edit === true) {
@@ -32,7 +28,7 @@ function Form() {
         type='text'
         placeholder='Add Todo'
         value={text}
-        onChange={handleTextChange}
+        onChange={(e) => setText(e.target.value)}
         className='w-[100%]	input input-bordered input-primary mr-3'
       />
       <button type='submit' className='btn btn-primary'>
